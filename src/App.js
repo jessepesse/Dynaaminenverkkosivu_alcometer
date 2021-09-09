@@ -2,8 +2,8 @@ import './App.css';
 import {useState} from 'react';
 
 function App() {
-  const [weight, setWeight] = useState(0);
-  const [bottles, setBottles] = useState(0);
+  const [weight, setWeight] = useState(70);
+  const [bottles, setBottles] = useState(1);
   const [time, setTime] = useState(1);
   const [gender, setGender] = useState('male');
   const [endresult, setEndresult] = useState(0);
@@ -42,8 +42,7 @@ function App() {
       </div>
       <div className="col-2">
         <label>Bottles</label>
-        <select name="bottles" value={bottles} onChange={(e) => setBottles(e.target.value)} className="form-select co">
-          <option defaultChecked value="0">0</option>
+        <select name="bottles" value={bottles} onChange={(e) => setBottles(e.target.value)} className="form-select col">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -61,12 +60,11 @@ function App() {
       <div className="col-2">
         <label>Time</label>
         <select name="time" value={time} onChange={(e) => setTime(e.target.value)} className="form-select col">
-        <option defaultChecked value="1">1</option>
+        <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
-
         <option value="6">6</option>
         <option value="7">7</option>
         <option value="8">8</option>
@@ -86,7 +84,7 @@ function App() {
         onChange={(e) => setGender(e.target.value)} /><label className="p-2">Female</label>
       </div>
       <div>
-        <output className="row justify-content-center p-2">{endresult.toFixed(2)}</output>
+        <output className="row justify-content-center p-2">Your alchol blood level is: {endresult.toFixed(2)}</output>
       </div>
       <button className="btn btn-primary col-3">Calculate</button>
     </form>
