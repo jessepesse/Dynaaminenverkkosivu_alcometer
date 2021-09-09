@@ -2,16 +2,15 @@ import './App.css';
 import {useState} from 'react';
 
 function App() {
-  const [weight, setWeight] = useState(90);
+  const [weight, setWeight] = useState(0);
   const [bottles, setBottles] = useState(0);
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(1);
   const [gender, setGender] = useState('male');
   const [endresult, setEndresult] = useState(0);
 
   function handleSubmit(e) {
     e.preventDefault();
     let result = 0;
-    let er = 0;
     let litres = bottles * 0.33;
     let grams = litres * 8 * 4.5;
     let burning = weight / 10;
@@ -25,70 +24,71 @@ function App() {
     }
     
     if (result < 0) {
-      er = 0;
+      setEndresult(0);
      }
      
-     setEndresult(er)
+     setEndresult(result);
   }
 
 
   return (
-    <div>
-    <h3>Calculate your alchol blood level</h3>
-    <form onSubmit={handleSubmit}>
-      <div>
+    <div className="container-fluid m-auto">
+    <h3 className="row justify-content-center">Calculate your alchol blood level</h3>
+    <form onSubmit={handleSubmit} className="row p-3 justify-content-center">
+      <div className="col-2">
         <label>Weight</label>
         <input type="number" step="1" value={weight}
-        onChange={(e) => setWeight(e.target.value)}></input>
+        onChange={(e) => setWeight(e.target.value)}className="form-control"></input>
       </div>
-      <div>
+      <div className="col-2">
         <label>Bottles</label>
-        <select>
-          <option defaultValue value="0" onChange={(e) => setBottles(e.target.value)}>0</option>
-          <option value="1" onChange={(e) => setBottles(e.target.value)}>1</option>
-          <option value="2" onChange={(e) => setBottles(e.target.value)}>2</option>
-          <option value="3" onChange={(e) => setBottles(e.target.value)}>3</option>
-          <option value="4" onChange={(e) => setBottles(e.target.value)}>4</option>
-          <option value="5" onChange={(e) => setBottles(e.target.value)}>5</option>
-          <option value="6" onChange={(e) => setBottles(e.target.value)}>6</option>
-          <option value="7" onChange={(e) => setBottles(e.target.value)}>7</option>
-          <option value="8" onChange={(e) => setBottles(e.target.value)}>8</option>
-          <option value="9" onChange={(e) => setBottles(e.target.value)}>9</option>
-          <option value="10" onChange={(e) => setBottles(e.target.value)}>10</option>
-          <option value="11" onChange={(e) => setBottles(e.target.value)}>11</option>
-          <option value="12" onChange={(e) => setBottles(e.target.value)}>12</option>
+        <select name="bottles" value={bottles} onChange={(e) => setBottles(e.target.value)} className="form-select co">
+          <option defaultChecked value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
         </select>
       </div>
-      <div>
+      <div className="col-2">
         <label>Time</label>
-        <select>
-        <option defaultValue value="1" onChange={(e) => setTime(e.target.value)}>1</option>
-        <option value="2" onChange={(e) => setTime(e.target.value)}>2</option>
-        <option value="3" onChange={(e) => setTime(e.target.value)}>3</option>
-        <option value="4" onChange={(e) => setTime(e.target.value)}>4</option>
-        <option value="5" onChange={(e) => setTime(e.target.value)}>5</option>
-        <option value="6" onChange={(e) => setTime(e.target.value)}>6</option>
-        <option value="7" onChange={(e) => setTime(e.target.value)}>7</option>
-        <option value="8" onChange={(e) => setTime(e.target.value)}>8</option>
-        <option value="9" onChange={(e) => setTime(e.target.value)}>9</option>
-        <option value="10" onChange={(e) => setTime(e.target.value)}>10</option>
-        <option value="11" onChange={(e) => setTime(e.target.value)}>11</option>
-        <option value="12" onChange={(e) => setTime(e.target.value)}>12</option>
+        <select name="time" value={time} onChange={(e) => setTime(e.target.value)} className="form-select col">
+        <option defaultChecked value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
         </select>
       </div>
       <div>
       </div>
-      <div>
-        <label>Gender</label>
+      <div className="col-5">
+        <label className="p-2">Gender</label>
         <input type="radio" value="male" defaultChecked 
-        onChange={(e) => setGender(e.target.value)} /><label>Male</label>
+        onChange={(e) => setGender(e.target.value)}/><label className="p-2">Male</label>
         <input type="radio" value="female"
-        onChange={(e) => setGender(e.target.value)} /><label>Female</label>
+        onChange={(e) => setGender(e.target.value)} /><label className="p-2">Female</label>
       </div>
       <div>
-        <output>{endresult}</output>
+        <output className="row justify-content-center p-2">{endresult.toFixed(2)}</output>
       </div>
-      <button>Calculate</button>
+      <button className="btn btn-primary col-3">Calculate</button>
     </form>
     </div>
   );
