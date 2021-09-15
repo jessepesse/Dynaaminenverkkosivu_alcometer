@@ -33,7 +33,7 @@ function App() {
 
   return (
     <div className="container-fluid m-auto">
-    <h3 className="row justify-content-center">Calculate your alchol blood level</h3>
+    <h3 className="row justify-content-center p-4">Calculate your alchol blood level</h3>
     <form onSubmit={handleSubmit} className="row p-3 justify-content-center">
       <div className="col-2">
         <label>Weight</label>
@@ -76,17 +76,18 @@ function App() {
       </div>
       <div>
       </div>
-      <div className="col-5">
-        <label className="p-2">Gender</label>
+      <div className="col-2">
+        <label className="p-2">Gender:</label>
         <input type="radio" value="male" defaultChecked 
         onChange={(e) => setGender(e.target.value)}/><label className="p-2">Male</label>
         <input type="radio" value="female"
         onChange={(e) => setGender(e.target.value)} /><label className="p-2">Female</label>
       </div>
       <div>
-        <output className="row justify-content-center p-2">Your alchol blood level is: {endresult.toFixed(2)}</output>
+        <p className="row justify-content-center">Your alchol blood level is:</p>
+        <output className="row justify-content-center">{endresult.toFixed(2)}</output>
       </div>
-      <button className="btn btn-primary col-3">Calculate</button>
+      <button className="btn btn-primary col-1 m-2">Calculate</button>
     </form>
     </div>
   );
